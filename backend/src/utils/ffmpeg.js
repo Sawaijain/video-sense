@@ -1,6 +1,12 @@
 const ffmpeg = require('fluent-ffmpeg');
+const ffmpegStatic = require('ffmpeg-static');
+const ffprobeStatic = require('ffprobe-static');
 const path = require('path');
 const fs = require('fs');
+
+// Use static binaries (works on Render, Heroku, etc.)
+ffmpeg.setFfmpegPath(ffmpegStatic);
+ffmpeg.setFfprobePath(ffprobeStatic.path);
 
 const probe = (filepath) => {
   return new Promise((resolve, reject) => {

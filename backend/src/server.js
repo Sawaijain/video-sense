@@ -18,7 +18,7 @@ const startServer = async () => {
   const server = http.createServer(app);
   initSocket(server);
 
-  server.listen(env.port, () => {
+  server.listen(env.port, '0.0.0.0', () => {
     console.log(`Server running on port ${env.port} [${env.nodeEnv}]`);
   });
 };

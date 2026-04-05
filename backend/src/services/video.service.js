@@ -34,10 +34,11 @@ const createVideo = async ({ title, description, file, userId }) => {
 };
 
 const listVideos = async (filter, query) => {
-  const { status, fromDate, toDate, minSize, maxSize, page = 1, limit = 12, sort = '-createdAt' } = query;
+  const { status, sensitivityLabel, fromDate, toDate, minSize, maxSize, page = 1, limit = 12, sort = '-createdAt' } = query;
   const dbFilter = { ...filter };
 
   if (status) dbFilter.status = status;
+  if (sensitivityLabel) dbFilter['sensitivityResult.overallLabel'] = sensitivityLabel;
   if (fromDate || toDate) {
     dbFilter.createdAt = {};
     if (fromDate) dbFilter.createdAt.$gte = new Date(fromDate);

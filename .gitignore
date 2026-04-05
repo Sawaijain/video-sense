@@ -1,0 +1,12 @@
+node_modules/
+.env
+dist/
+.DS_Store
+*.log
+
+# Uploaded files
+**/uploads/videos/*
+**/uploads/frames/*
+**/uploads/temp/*
+!**/uploads/videos/.gitkeep
+!**/uploads/frames/.gitkeep

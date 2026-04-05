@@ -17,6 +17,9 @@ export function SocketProvider({ children, token }) {
 
     const newSocket = io(import.meta.env.VITE_SOCKET_URL || window.location.origin, {
       auth: { token },
+      transports: ['websocket', 'polling'],
+      reconnectionAttempts: 10,
+      reconnectionDelay: 2000,
     });
 
     newSocket.on('connect', () => {
